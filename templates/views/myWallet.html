@@ -1,0 +1,123 @@
+{% extends "decorators/web.html" %}
+{% block content %}
+<div class="container">
+    <div class="d-flex flex-column justify-content-center align-items-center py-4 ">
+        <h1 class="my-3">Ví của tôi</h1>
+
+        
+        <div class="w-100 d-flex justify-content-end">
+            <form>
+                <div class="input-group rounded">
+                    <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                    <span class="input-group-text border-0" id="search-addon">
+                      <i class="fas fa-search"></i>
+                    </span>
+                  </div>
+            </form>        
+        </div>
+        <div class="row mt-5 row-cols-lg-3 row-cols-1  g-4 border-top border-dark p-5 w-100">
+
+            <div class="col p-3" >
+              <div class="card " style="min-height: 0!important; 
+              min-width:250px;
+              height:250px;
+
+              ">
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <div>
+                        <h5 class="card-title w-100 d-flex justify-content-between">Wallet digital</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">00002123</h6>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                    
+                    <div class=" mt-2 d-flex w-100 text-center ">
+                        <button type="button" class="btn btn-primary mr-2" 
+                        style="min-width:100px"
+                        data-toggle="modal" data-target="#detailModal">
+                            Chi tiêt
+                        </button>
+                        <button  type="button" class="btn btn-danger"
+                        style="min-width:100px"
+                        data-toggle="modal" data-target="#removeModal"
+                        >Xóa</button>
+                    </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-end w-100">
+            <button class="btn btn-danger rounded-circle"
+            
+            data-toggle="modal" data-target="#addModal"
+            >
+                <span>
+                    <i class="fa fa-plus fa-3x" aria-hidden="true"></i>
+                </span>
+            </button>
+        </div>
+    </div>
+    <div>
+        <!-- Modal detail -->
+        <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Thông tin chi tiết ví</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                ...
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <!-- Modal delete -->
+        <div class="modal fade" id="removeModal" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                ...
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <!-- Modal add -->
+         <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Thông tin chi tiết ví</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                ...
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock%}
