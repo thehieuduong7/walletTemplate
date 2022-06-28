@@ -15,50 +15,79 @@
                   </div>
             </form>        
         </div>
-        <div class="row mt-5 row-cols-lg-3 row-cols-1  g-4 border-top border-dark p-5 w-100">
+        <div class="w-100 mt-4">
+            <table class="table table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col" class="col-1">#</th>
+                    <th scope="col">ID address</th>
+                    <th scope="col" class="col-3">Control</th>
+                  </tr>
+                </thead>
+                <tbody id="content-listWallet">
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>
+                        <div class=" mt-2 d-flex justify-content-center ">
+                            <button type="button" class="btn btn-primary mr-2" 
+                            style="min-width:100px"
+                            onclick="detailWallet('1')"
 
-            <div class="col p-3" >
-              <div class="card " style="min-height: 0!important; 
-              min-width:250px;
-              height:250px;
+                            >
+                                Chi tiết
+                            </button>
+                            <button  type="button" class="btn btn-danger"
+                            style="min-width:100px"
+                            onclick="removeWallet('1')"
+                            >Xóa</button>
+                        </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>
+                        <div class=" mt-2 d-flex justify-content-center ">
+                            <button type="button" class="btn btn-primary mr-2" 
+                            style="min-width:100px"
+                            onclick="detailWallet('2')"
+                            >
+                                Chi tiết
+                            </button>
+                            <button  type="button" class="btn btn-danger"
+                            style="min-width:100px"
+                            onclick="removeWallet('1')"
+                            >Xóa</button>
+                        </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
 
-              ">
-                <div class="card-body d-flex flex-column justify-content-between">
-                    <div>
-                        <h5 class="card-title w-100 d-flex justify-content-between">Wallet digital</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">00002123</h6>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                    
-                    <div class=" mt-2 d-flex w-100 text-center ">
-                        <button type="button" class="btn btn-primary mr-2" 
-                        style="min-width:100px"
-                        data-toggle="modal" data-target="#detailModal">
-                            Chi tiêt
-                        </button>
-                        <button  type="button" class="btn btn-danger"
-                        style="min-width:100px"
-                        data-toggle="modal" data-target="#removeModal"
-                        >Xóa</button>
-                    </div>
-                </div>
-              </div>
-            </div>
-        </div>
-        <div class="d-flex justify-content-end w-100">
-            <button class="btn btn-danger rounded-circle"
-            
-            data-toggle="modal" data-target="#addModal"
-            >
-                <span>
-                    <i class="fa fa-plus fa-3x" aria-hidden="true"></i>
-                </span>
-            </button>
-        </div>
+    </div>
+    <div class="d-flex justify-content-end w-100 mb-4">
+        <button class="btn btn-danger rounded-circle"
+        data-toggle="modal" data-target="#addModal"
+        >
+            <span>
+                <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+            </span>
+        </button>
     </div>
     <div>
+
+        <button type="button" class="btn btn-primary d-none" 
+                            style="min-width:100px"
+                            data-toggle="modal" data-target="#detailModal"
+                            id="detailButtonActive"
+                            >
+                                Chi tiết
+                            </button>
+
         <!-- Modal detail -->
-        <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal fade show" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -67,33 +96,58 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
                 </div>
-                <div class="modal-body">
-                ...
+                <div class="modal-body" id="content-detail">
+                    <div>
+                        <label for="privateKey">
+                            <span>
+                                <i class="fa fa-key" aria-hidden="true"></i>
+                            </span>
+                            Private key:
+                        </label>
+                        <h3 class="d-inline" id = 'privateKey'>xxxxxxxxxxxxx</h3 >
+                    </div>
+                    <div>
+                        <label for="money">
+                            <span>
+                                <i class="fa fa-money" aria-hidden="true"></i>
+                            </span>
+                            Số dư: 
+                        </label>
+                        <h3 class="d-inline" id="money">xxxxxxxxxxxxx</h3 >
+                    </div>
                 </div>
                 <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
                 </div>
             </div>
             </div>
         </div>
 
+        <button  type="button" class="btn btn-danger d-none"
+        style="min-width:100px"
+        data-toggle="modal" data-target="#removeModal"
+        id="removeButtonActive"
+
+        >Xóa</button>
         <!-- Modal delete -->
         <div class="modal fade" id="removeModal" tabindex="-1" role="dialog"
          aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Xóa ví</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
                 </div>
                 <div class="modal-body">
-                ...
+                    Bạn chắc chắn muốn xóa ví <strong id="removeID">
+
+                    </strong>?
                 </div>
                 <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-danger">Xóa</button>
                 </div>
             </div>
             </div>
@@ -104,7 +158,7 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Thông tin chi tiết ví</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">Thêm ví</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -113,11 +167,82 @@
                 ...
                 </div>
                 <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
                 </div>
             </div>
             </div>
         </div>
     </div>
 </div>
+<script>
+    const privateKey = document.getElementById('privateKey')
+    const money = document.getElementById('money')
+
+    const modal_detail = document.getElementById('detailModal')
+    const btn_detail =document.getElementById('detailButtonActive')
+    function detailWallet(index){
+        let data = dataList[index];
+        privateKey.innerHTML=data.private_key;
+        money.innerHTML=data.money;
+        btn_detail.click();
+    }
+
+    const removeID = document.getElementById('removeID')
+    const modal_remove = document.getElementById('removeModal')
+    const btn_remove =document.getElementById('removeButtonActive')
+    function removeWallet(index){
+        let data = dataList[index];
+
+        removeID.innerHTML = data.id_addr;
+        btn_remove.click();
+    }
+
+    const content_listWallet = document.getElementById('content-listWallet');
+
+    const dataList = [{
+        id_addr:'x23123saw',
+        private_key:'x22312key_1',
+        money:2000,
+    },
+    {
+        id_addr:'x231223123saw2',
+        private_key:'x22312key_2',
+        money:202100,
+    },
+    {
+        id_addr:'x23123saw3',
+        private_key:'x22312key_3',
+        money:3000,
+    }]
+    
+
+    function fillData(data){
+        content_listWallet.innerHTML=''
+        for (let i=0;i<data.length;i++){
+            let ele = data[i]
+            let tr = document.createElement('tr');
+            tr.innerHTML=`
+                    <th scope="row">${i+1}</th>
+                    <td>${ele.id_addr}</td>
+                    <td>
+                        <div class=" mt-2 d-flex justify-content-center ">
+                            <button type="button" class="btn btn-primary mr-2" 
+                            style="min-width:100px"
+                            onclick="detailWallet(${i})"
+                            >
+                                Chi tiết
+                            </button>
+                            <button  type="button" class="btn btn-danger"
+                            style="min-width:100px"
+                            onclick="removeWallet(${i})"
+                            >Xóa</button>
+                        </div>
+                    </td>
+            `
+            content_listWallet.appendChild(tr)
+        }
+    }
+    fillData(dataList)
+
+</script>
 {% endblock%}
